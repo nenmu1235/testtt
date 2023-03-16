@@ -11,7 +11,7 @@ import googletrans
 import streamlit as st
 
 model_engine = 'davinci'
-openai.api_key = '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'
+openai.api_key = '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'
 
 def generate_text(prompt):
     response = openai.Completion.create(
