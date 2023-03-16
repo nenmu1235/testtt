@@ -8,7 +8,7 @@ Created on Fri Mar 17 02:54:21 2023
 
 import openai
 import streamlit as st
-openai.api_key = password
+openai.api_key = st.secrets['password']
 model_engine = 'davinci'
 text = st.text_input("say something")
 st.write(text)
