@@ -48,3 +48,5 @@ try:
     st.write("Chatbot: ", bot_text)
 except:
     pass
+st.write("당신: ", text)
+st.write("Chatbot: ", bot_text)
