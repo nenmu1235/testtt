@@ -8,7 +8,7 @@ Created on Thu Mar 16 19:26:58 2023
 
 import openai
 import googletrans
-import streamlit
+import streamlit as st
 
 model_engine = 'davinci'
 openai.api_key = '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'
