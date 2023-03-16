@@ -48,3 +48,4 @@ try:
     st.write("Chatbot: ", ko_text)
 except:
     pass
+st.write(text, ko_text)
