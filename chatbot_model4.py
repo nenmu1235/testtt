@@ -43,8 +43,8 @@ try:
     text = st.text_input("대화를 입력하세요: ")
     en_text = ko_to_en(text)
     response = generate_text(en_text)
-    ko_text = en_to_ko(response)
+    bot_text = en_to_ko(response)
     st.write("당신: ",text)
-    st.write("Chatbot: ", ko_text)
+    st.write("Chatbot: ", bot_text)
 except:
     pass
