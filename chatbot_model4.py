@@ -39,12 +39,10 @@ def en_to_ko(text):
     ko_text = translate(ja_text, "ko")
     return ko_text
 
-try:
-    text = st.text_input("대화를 입력하세요: ")
-    en_text = ko_to_en(text)
-    response = generate_text(en_text)
-    ko_response = en_to_ko(response)
-    st.write("당신: ",text)
-    st.write("Chatbot: ", ko_response)
-except:
-    pass
+text = st.text_input("대화를 입력하세요: ")
+en_text = ko_to_en(text)
+response = generate_text(en_text)
+ko_response = en_to_ko(response)
+st.write("당신: ",text)
+st.write("Chatbot: ", ko_response)
+
