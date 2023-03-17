@@ -11,7 +11,7 @@ import googletrans
 import streamlit as st
 
 model_engine = 'davinci'
-openai.api_key = API_KEY
+openai.api_key = st.secrets['API_KEY']
 
 def generate_text(prompt):
     response = openai.Completion.create(
