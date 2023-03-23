@@ -18,7 +18,8 @@ def generate_text(prompt):
       model=model_engine,
       messages=[
         {"role": "system", "content": "You are a freind of user."},
-        {"role": "user", "content": prompt},
+        {"role": "user", "content": prompt}
+        ]
     )
     text = response['choices'][0]['message']['content']
     return text
