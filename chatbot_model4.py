@@ -10,20 +10,17 @@ import openai
 import googletrans
 import streamlit as st
 
-model_engine = 'davinci'
+model_engine = 'gpt-3.5-turbo'
 openai.api_key = st.secrets['API_KEY']
 
 def generate_text(prompt):
-    response = openai.Completion.create(
-      engine=model_engine,
-      prompt=prompt,
-      max_tokens=20,
-      n=1,
-      stop="STOP",
-      temperature=0.5,
+    response = openai.ChatCompletion.create(
+      model=model_engine,
+      messages=[
+        {"role": "system", "content": "You are a freind of user."},
+        {"role": "user", "content": prompt},
     )
-    raw_text = response.choices[0].text
-    text = raw_text.strip()
+    text = response['choices'][0]['message']['content']
     return text
 
 def translate(text, lan):
