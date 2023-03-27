@@ -1,3 +1,19 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Mar 27 14:01:49 2023
+
+@author: haeyuel
+"""
+
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Created on Thu Mar 16 19:26:58 2023
+
+@author: haeyuel
+"""
+
 import openai
 import googletrans
 import streamlit as st
@@ -20,31 +36,41 @@ def translate(text, lan):
     translator = googletrans.Translator()
     response = translator.translate(text, dest = lan).text
     return response
-
+def ko_to_en(text):
+    ja_text = translate(text, "ja")
+    en_text = translate(ja_text, "en")
+    return en_text
+def en_to_ko(text):
+    ja_text = translate(text, "ja")
+    ko_text = translate(ja_text, "ko")
+    return ko_text
 
 text = st.text_input("대화를 입력하세요: ")
-response = generate_text(text)
+en_text = ko_to_en(text)
+response = generate_text(en_text)
+ko_response = en_to_ko(response)
 st.write("당신: ",text)
-st.write("Chatbot: ", response)
+st.write("Chatbot: ", ko_response)
 
 #추가
-word_list = ['Bullying', 'bully', 'bullied', 'bullies', 'Harassment', 'harass', 'harassed', 'harasses', 'Intimidation', 'intimidate', 'intimidated', 'intimidates', 'Verbal abuse', 'verbally abuse', 'verbally abused', 'verbally abuses', 'Physical abuse', 'physically abuse', 'physically abused', 'physically abuses', 'Cyberbullying', 'cyberbully', 'cyberbullied', 'cyberbullies', 'Social exclusion', 'exclude', 'excluded', 'excludes', 'Victim', 'victimize', 'victimized', 'victimizes', 'Aggressor', 'aggress', 'aggressed', 'aggresses', 'Peer pressure', 'pressure', 'pressured', 'pressures', 'Hazing', 'haze', 'hazed', 'hazes', 'Name-calling', 'call names', 'called names', 'calls names', 'Taunting', 'taunt', 'taunted', 'taunts', 'Threatening', 'threaten', 'threatened', 'threatens', 'Blackmail', 'blackmail', 'blackmailed', 'blackmails', 'Coercion', 'coerce', 'coerced', 'coerces', 'Homophobia', 'homophobe', 'homophobic', 'homophobes', 'Xenophobia', 'xenophobe', 'xenophobic', 'xenophobes', 'Racism', 'racist', 'racial', 'racists', 'Discrimination', 'discriminate', 'discriminated', 'discriminates', 'Bias', 'biased', 'biasing', 'biases', 'Stereotyping', 'stereotype', 'stereotyped', 'stereotypes', 'Prejudice', 'prejudiced', 'prejudicing', 'prejudices', 'Inequality', 'unequal', 'inequality', 'inequalities', 'Oppression', 'oppress', 'oppressed', 'oppresses', 'Power dynamics', 'power', 'powered', 'powers', 'Bullying prevention', 'prevent bullying', 'prevented bullying', 'prevents bullying', 'Conflict resolution', 'resolve conflict', 'resolved conflict', 'resolves conflict', 'Restorative justice', 'restore justice', 'restored justice', 'restores justice', 'Counseling', 'counsel', 'counseled', 'counsels', 'Mental health', 'mental', 'health', 'mental health', 'Trauma', 'traumatize', 'traumatized', 'traumatizes', 'Anxiety', 'anxious', 'anxiety', 'anxieties', 'Depression', 'depress', 'depressed', 'depresses', 'Suicide', 'suicidal', 'suicide', 'suicides', 'Self-harm', 'self-harm', 'self-harmed', 'self-harms', 'Substance abuse', 'abuse substances', 'abused substances', 'abuses substances', 'Academic performance', 'perform academically', 'performed academically', 'performs academically', 'Attendance', 'attend', 'attended', 'attends', 'Truancy', 'truant', 'truanted', 'truants', 'Dropouts', 'dropout', 'dropped out', 'dropouts', 'Suspension', 'suspend', 'suspended', 'suspends', 'Expulsion', 'expel', 'expelled', 'hit', 'violence']
+word_list = ['괴롭힘', '협박', '폭력', '차별', '성희롱', '가해자', '피해자', '사이버 폭력', '인신공격', '피해자 지원', '피해자보호 정책', '선생님 폭력', '학교폭력 보고서', '학교폭력 증거보존', '학교폭력 법적 대응', '선도교사', '학교 내 고립', '학교 내 대인관계', '권리 침해', '가정 내 폭력', '부모교육', '학교폭력 예방 봉사활동', '초등학교 폭력', '중학교 폭력', '고등학교 폭력', '대학교 폭력', '초등학교 폭력 예방', '중학교 폭력 예방', '고등학교 폭력 예방', '대학교 폭력 예방', '학생회 폭력', '체육 대회 폭력', '학교 내 성소수자 차별', '학교 폭력 피해 심리', '학교폭력 관련 법률', '학교폭력 예방 위원회', '학교폭력 예방 자료', '학교폭력 예방 가이드라인', '학교폭력 예방 사례', '불완전한 가정']
 if en_text.endswith("?"):
     enc_text = en_text.strip("?")
 else:
     enc_text = en_text
 for item in enc_text.split():
     if item in word_list:
-        SMTP_SERVER = 'smtp.gmail.com'
-        SMTP_PORT = 465
-        smtp = smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT)
-        EMAIL_ADDR = 'testu7295'
-        EMAIL_PASSWORD = 'gawakfxfrkfmsmtr'
-        smtp.login(EMAIL_ADDR, EMAIL_PASSWORD)
-        message = EmailMessage()
-        message.set_content('이메일 본문')
-        message["Subject"] = "warning from chatbot"
-        message["From"] = EMAIL_ADDR  #보내는 사람의 이메일 계정
-        message["To"] = 'testu7295@gmail.com'
-        smtp.send_message(message)
+        smtp = smtplib.SMTP('smtp.gmail.com', 587)
+
+        smtp.ehlo()
+
+        smtp.starttls()
+
+        smtp.login('testuser7295@gmail.com', 'gqxqmblqkrjamqma')
+
+        msg = MIMEText('내용 : 학교폭력 위험 신호 감지됨')
+        msg['Subject'] = 'Chatbot으로부터 해당 시간에 학교폭력 위험 신호가 감지되었습니다.'
+
+        smtp.sendmail('testuser7295@gmail.com', 'zollida01@gmail.com', msg.as_string())
+
         smtp.quit()
