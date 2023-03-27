@@ -1,6 +1,8 @@
 import openai
 import googletrans
 import streamlit as st
+import smtplib
+from email.mime.text import MIMEText
 
 model_engine = 'gpt-3.5-turbo'
 openai.api_key = st.secrets['API_KEY']
