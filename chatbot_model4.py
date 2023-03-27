@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-"""
-Created on Thu Mar 16 19:26:58 2023
-
-@author: haeyuel
-"""
-
 import openai
 import googletrans
 import streamlit as st
@@ -28,21 +20,12 @@ def translate(text, lan):
     translator = googletrans.Translator()
     response = translator.translate(text, dest = lan).text
     return response
-def ko_to_en(text):
-    ja_text = translate(text, "ja")
-    en_text = translate(ja_text, "en")
-    return en_text
-def en_to_ko(text):
-    ja_text = translate(text, "ja")
-    ko_text = translate(ja_text, "ko")
-    return ko_text
+
 
 text = st.text_input("대화를 입력하세요: ")
-en_text = ko_to_en(text)
-response = generate_text(en_text)
-ko_response = en_to_ko(response)
+response = generate_text(text)
 st.write("당신: ",text)
-st.write("Chatbot: ", ko_response)
+st.write("Chatbot: ", response)
 
 #추가
 word_list = ['Bullying', 'bully', 'bullied', 'bullies', 'Harassment', 'harass', 'harassed', 'harasses', 'Intimidation', 'intimidate', 'intimidated', 'intimidates', 'Verbal abuse', 'verbally abuse', 'verbally abused', 'verbally abuses', 'Physical abuse', 'physically abuse', 'physically abused', 'physically abuses', 'Cyberbullying', 'cyberbully', 'cyberbullied', 'cyberbullies', 'Social exclusion', 'exclude', 'excluded', 'excludes', 'Victim', 'victimize', 'victimized', 'victimizes', 'Aggressor', 'aggress', 'aggressed', 'aggresses', 'Peer pressure', 'pressure', 'pressured', 'pressures', 'Hazing', 'haze', 'hazed', 'hazes', 'Name-calling', 'call names', 'called names', 'calls names', 'Taunting', 'taunt', 'taunted', 'taunts', 'Threatening', 'threaten', 'threatened', 'threatens', 'Blackmail', 'blackmail', 'blackmailed', 'blackmails', 'Coercion', 'coerce', 'coerced', 'coerces', 'Homophobia', 'homophobe', 'homophobic', 'homophobes', 'Xenophobia', 'xenophobe', 'xenophobic', 'xenophobes', 'Racism', 'racist', 'racial', 'racists', 'Discrimination', 'discriminate', 'discriminated', 'discriminates', 'Bias', 'biased', 'biasing', 'biases', 'Stereotyping', 'stereotype', 'stereotyped', 'stereotypes', 'Prejudice', 'prejudiced', 'prejudicing', 'prejudices', 'Inequality', 'unequal', 'inequality', 'inequalities', 'Oppression', 'oppress', 'oppressed', 'oppresses', 'Power dynamics', 'power', 'powered', 'powers', 'Bullying prevention', 'prevent bullying', 'prevented bullying', 'prevents bullying', 'Conflict resolution', 'resolve conflict', 'resolved conflict', 'resolves conflict', 'Restorative justice', 'restore justice', 'restored justice', 'restores justice', 'Counseling', 'counsel', 'counseled', 'counsels', 'Mental health', 'mental', 'health', 'mental health', 'Trauma', 'traumatize', 'traumatized', 'traumatizes', 'Anxiety', 'anxious', 'anxiety', 'anxieties', 'Depression', 'depress', 'depressed', 'depresses', 'Suicide', 'suicidal', 'suicide', 'suicides', 'Self-harm', 'self-harm', 'self-harmed', 'self-harms', 'Substance abuse', 'abuse substances', 'abused substances', 'abuses substances', 'Academic performance', 'perform academically', 'performed academically', 'performs academically', 'Attendance', 'attend', 'attended', 'attends', 'Truancy', 'truant', 'truanted', 'truants', 'Dropouts', 'dropout', 'dropped out', 'dropouts', 'Suspension', 'suspend', 'suspended', 'suspends', 'Expulsion', 'expel', 'expelled', 'hit', 'violence']
