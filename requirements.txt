@@ -1,4 +1,4 @@
 openai
 streamlit
 googletrans==3.1.0a0
-smtlib
+smtplib
