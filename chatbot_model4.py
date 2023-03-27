@@ -34,7 +34,7 @@ if st.button('안녕!'):
     name = st.text_input('이름:')
 else:
     st.write('안녕하세요!')
-while type(name)== str:
+while type(name) == str:
     text = st.text_input("대화를 입력하세요: ")
     en_text = ko_to_en(text)
     response = generate_text(en_text)
