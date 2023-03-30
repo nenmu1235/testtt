@@ -54,7 +54,7 @@ for item in textt.split():
         smtp.login('testuser7295@gmail.com', 'gqxqmblqkrjamqma')
 
         msg = MIMEText('내용 : 학교폭력 위험 신호 감지됨')
-        msg['Subject'] = 'Chatbot으로부터 해당 시간에 학교폭력 위험 신호가 감지되었습니다. 이름: '+ name
+        msg['Subject'] = 'Chatbot으로부터 해당 시간에 학교폭력 위험 신호가 감지되었습니다. 이름: '+ name + 'keyword: ' + item
 
         smtp.sendmail('testuser7295@gmail.com', 'zollida01@gmail.com', msg.as_string())
 
