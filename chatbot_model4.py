@@ -2,6 +2,7 @@ import openai
 import googletrans
 import streamlit as st
 import smtplib
+import time
 from email.mime.text import MIMEText
 
 model_engine = 'gpt-3.5-turbo'
