@@ -27,6 +27,7 @@ def submit():
     st.session_state.chat = st.session_state.widget
     st.session_state.widget = ''
 
+name = "당신"
 name = st.text_input('이름:')
 text = st.text_input('대화를 입력하세요', key='widget', on_change=submit)
 response = generate_text(text)
