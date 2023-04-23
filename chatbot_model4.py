@@ -6,7 +6,7 @@ from email.mime.text import MIMEText
 
 model_engine = 'gpt-3.5-turbo'
 openai.api_key = st.secrets['API_KEY']
-
+password = st.secrets['password']
 def generate_text(prompt):
     response = openai.ChatCompletion.create(
       model=model_engine,
@@ -61,7 +61,7 @@ for item in textt.split():
 
         smtp.starttls()
 
-        smtp.login('testuser7295@gmail.com', 'gqxqmblqkrjamqma')
+        smtp.login('testuser7295@gmail.com', password)
         server_time = time.strftime('%c', time.localtime(time.time()))
         msg = MIMEText('내용 : 학교폭력 위험 신호 감지됨 -By keyword detecting')
         msg['Subject'] = 'Chatbot으로부터 해당 시간에 학교폭력 위험 신호가 감지되었습니다. 이름: '+ name + 'keyword: ' + item + '시간: ' + server_time
@@ -76,7 +76,7 @@ if determine_text(text) == "Yes":
 
     smtp.starttls()
 
-    smtp.login('testuser7295@gmail.com', 'gqxqmblqkrjamqma')
+    smtp.login('testuser7295@gmail.com', password)
     server_time = time.strftime('%c', time.localtime(time.time()))
     msg = MIMEText('내용 : 학교폭력 위험 신호 감지됨 -By Openai detecting')
     msg['Subject'] = 'Chatbot으로부터 해당 시간에 학교폭력 위험 신호가 감지되었습니다. 이름: '+ name + 'text: ' + text + '시간: ' + server_time
