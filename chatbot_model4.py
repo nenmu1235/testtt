@@ -7,7 +7,6 @@ from email.mime.text import MIMEText
 model_engine = 'gpt-3.5-turbo'
 openai.api_key = st.secrets['API_KEY']
 password = st.secrets['password']
-st.write(password)
 def generate_text(prompt):
     response = openai.ChatCompletion.create(
       model=model_engine,
