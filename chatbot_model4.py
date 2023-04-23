@@ -69,7 +69,7 @@ for item in textt.split():
         smtp.sendmail('testuser7295@gmail.com', 'zollida01@gmail.com', msg.as_string())
 
         smtp.quit()
-if determine_text(text) == "Yes":
+if determine_text(text) == "Yes.":
     smtp = smtplib.SMTP('smtp.gmail.com', 587)
 
     smtp.ehlo()
