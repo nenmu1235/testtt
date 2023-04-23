@@ -28,12 +28,12 @@ def submit():
     st.session_state.widget = ''
 
 name = st.text_input('이름:')
-st.text_input('대화를 입력하세요', key='widget', on_change=submit)
-response = generate_text(st.session_state.chat)
+text = st.text_input('대화를 입력하세요', key='widget', on_change=submit)
+response = generate_text(text)
 if name == '':
-    st.write("당신" + ": " + st.session_state.chat)
+    st.write("당신" + ": " + text)
 else:
-    st.write(name + ": " + st.session_state.chat)
+    st.write(name + ": " + text)
 st.write("토닥이: ", response)
 
 #추가
