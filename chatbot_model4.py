@@ -29,7 +29,7 @@ def submit():
 
 name = st.text_input('이름:')
 st.text_input('대화를 입력하세요', key='widget', on_change=submit)
-text = st.sesstion_state.chat
+text = st.session_state.chat
 response = generate_text(text)
 if name == '':
     st.write("당신" + ": " + text)
