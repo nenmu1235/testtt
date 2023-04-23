@@ -63,9 +63,8 @@ for item in textt.split():
 
         smtp.login('testuser7295@gmail.com', password)
         server_time = time.strftime('%c', time.localtime(time.time()))
-        msg = MIMEText('내용 : 학교폭력 위험 신호 감지됨 -By keyword detecting')
-        msg['Subject'] = 'Chatbot으로부터 해당 시간에 학교폭력 위험 신호가 감지되었습니다. 이름: '+ name + 'keyword: ' + item + '시간: ' + server_time
-
+        msg = MIMEText('Chatbot으로부터 해당 시간에 학교폭력 위험 신호가 감지되었습니다. 이름: '+ name + 'keyword: ' + item + '시간: ' + server_time)
+        msg['Subject'] = '학교폭력 위험 신호 감지됨 -By keyword detecting'
         smtp.sendmail('testuser7295@gmail.com', 'zollida01@gmail.com', msg.as_string())
 
         smtp.quit()
@@ -78,9 +77,8 @@ if determine_text(text) == "Yes.":
 
     smtp.login('testuser7295@gmail.com', password)
     server_time = time.strftime('%c', time.localtime(time.time()))
-    msg = MIMEText('내용 : 학교폭력 위험 신호 감지됨 -By Openai detecting')
-    msg['Subject'] = 'Chatbot으로부터 해당 시간에 학교폭력 위험 신호가 감지되었습니다. 이름: '+ name + 'text: ' + text + '시간: ' + server_time
-
+    msg = MIMEText('Chatbot으로부터 해당 시간에 학교폭력 위험 신호가 감지되었습니다. 이름: '+ name + 'text: ' + text + '시간: ' + server_time)
+    msg['Subject'] = '학교폭력 위험 신호 감지됨 -By Openai detecting'
     smtp.sendmail('testuser7295@gmail.com', 'zollida01@gmail.com', msg.as_string())
 
     smtp.quit()
