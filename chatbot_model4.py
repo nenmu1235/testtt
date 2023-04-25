@@ -40,19 +40,14 @@ name = st.text_input('이름:')
 st.text_input('대화를 입력하세요', key='widget', on_change=submit)
 text = st.session_state.chat
 response = generate_text(text)
-if name == '' and text !='' :
-    st.write("당신" + ": " + text)
-elif name != '' :
-    st.write(name + ": " + text)
-else:
-    st.write('이름과 대화를 입력해주세요')
-if text != '':
-    st.write("토닥이: ", response)
 if name == '' and text == '':
     st.write('이름과 대화를 입력해주세요')
 elif name != '' and text =='':
-    st.write('대화를 입력해주세요')
-elif name 
+    st.write(name + '님 안녕하세요! 대화를 입력해주세요.')
+elif name == '' and text != '':
+    st.write("당신" + ": " + text)
+else:
+    st.write(name + ": " + text)
 #추가
 word_list = ['괴롭힘','괴롭', '협박', '폭력', '차별', '성희롱', '가해자', '피해자', '사이버 폭력', '인신공격', '피해자 지원', '피해자보호 정책', '선생님 폭력', '학교폭력 보고서', '학교폭력 증거보존', '학교폭력 법적 대응', '선도교사', '학교 내 고립', '학교 내 대인관계', '권리 침해', '가정 내 폭력', '부모교육', '학교폭력 예방 봉사활동', '초등학교 폭력', '중학교 폭력', '고등학교 폭력', '대학교 폭력', '초등학교 폭력 예방', '중학교 폭력 예방', '고등학교 폭력 예방', '대학교 폭력 예방', '학생회 폭력', '체육 대회 폭력', '학교 내 성소수자 차별', '학교 폭력 피해 심리', '학교폭력 관련 법률', '학교폭력 예방 위원회', '학교폭력 예방 자료', '학교폭력 예방 가이드라인', '학교폭력 예방 사례', '불완전한 가정']
 if text.endswith("?"):
