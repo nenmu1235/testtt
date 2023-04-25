@@ -40,10 +40,12 @@ name = st.text_input('이름:')
 st.text_input('대화를 입력하세요', key='widget', on_change=submit)
 text = st.session_state.chat
 response = generate_text(text)
-if name == '':
+if name == '' and text !='' :
     st.write("당신" + ": " + text)
-else:
+elif name != '' :
     st.write(name + ": " + text)
+else:
+    st.write('이름과 대화를 입력해주세요')
 if text != '':
     st.write("토닥이: ", response)
     
