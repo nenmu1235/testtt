@@ -44,6 +44,7 @@ if name == '' and text == '':
     st.write('이름과 대화를 입력해주세요.')
 elif name == '' and text != '':
     st.write('당신 :', text)
+    st.write('토닥이', ': ', response)
 elif name != '' and text == '':
     st.write('대화를 입력해주세요.')
 elif name != '' and text != '':
