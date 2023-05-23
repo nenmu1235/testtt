@@ -11,7 +11,7 @@ def generate_text(prompt):
     response = openai.ChatCompletion.create(
       model=model_engine,
       messages=[
-        {"role": "system", "content": "Your name is '토닥이'. You are a freind of user."},
+        {"role": "system", "content": "Your name is '토닥이'. You are a freind of user. You are never allowed to say aggresive word, including the word written by Korean."},
         {"role": "user", "content": prompt}
         ]
     )
