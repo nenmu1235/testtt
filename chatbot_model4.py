@@ -22,7 +22,7 @@ def determine_text(prompt):
     response = openai.ChatCompletion.create(
       model=model_engine,
       messages=[
-        {"role": "system", "content": "Figure out if the prompt is related to school bullying. Determine only by Yes or No. The output should only by 'Yes' or 'No'. You should not answer to the prompt. You just determine by saying 'Yes' or 'no'."},
+        {"role": "system", "content": "First, translate the prompt into English. Then, figure out if the prompt is related to school bullying. Determine only by Yes or No. The output should only by 'Yes' or 'No'. You should not answer to the prompt. Just determine by saying 'Yes' or 'no'."},
         {"role": "user", "content": prompt}
         ]
     )
